@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection
+from app.api.routes import visitor, selfie, avatar
 
 
 @asynccontextmanager
@@ -28,6 +29,10 @@ app.add_middleware(
 )
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+app.include_router(visitor.router, prefix=settings.API_PREFIX)
+app.include_router(selfie.router, prefix=settings.API_PREFIX)
+app.include_router(avatar.router, prefix=settings.API_PREFIX)
 
 
 @app.get("/")

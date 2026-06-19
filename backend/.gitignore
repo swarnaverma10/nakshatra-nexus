@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+static/uploads/*
+static/passports/*
+!static/uploads/.gitkeep
+!static/passports/.gitkeep
+.DS_Store

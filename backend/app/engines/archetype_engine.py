@@ -1,0 +1,33 @@
+NAKSHATRA_ARCHETYPE = {
+    "Ashwini": {"archetype": "The Cosmic Healer", "title": "Divine Physician of the Stars", "description": "You carry ancient healing codes in your soul. Swiftness and grace define your cosmic mission.", "symbol": "Horse Head", "deity": "Ashwini Kumaras"},
+    "Bharani": {"archetype": "The Soul Transformer", "title": "Keeper of Life and Death", "description": "You hold the power of creation and dissolution. Transformation is your birthright.", "symbol": "Yoni", "deity": "Yama"},
+    "Krittika": {"archetype": "The Cosmic Warrior", "title": "Blade of the Celestial Fire", "description": "Sharp, precise, and burning with purpose. You cut through illusion with sacred fire.", "symbol": "Blade", "deity": "Agni"},
+    "Rohini": {"archetype": "The Cosmic Creator", "title": "Weaver of Beauty and Abundance", "description": "You magnetize beauty, love, and abundance. The universe pours its gifts through you.", "symbol": "Chariot", "deity": "Brahma"},
+    "Mrigashira": {"archetype": "The Eternal Seeker", "title": "Hunter of Sacred Truths", "description": "Forever searching, forever discovering. Your curiosity is a divine compass.", "symbol": "Deer Head", "deity": "Soma"},
+    "Ardra": {"archetype": "The Storm Breaker", "title": "Eye of the Cosmic Storm", "description": "You were forged in chaos and emerged as clarity. Your tears water the seeds of new worlds.", "symbol": "Teardrop", "deity": "Rudra"},
+    "Punarvasu": {"archetype": "The Cosmic Renewer", "title": "Light That Always Returns", "description": "Like the morning star, you rise again and again. Resilience is your superpower.", "symbol": "Quiver", "deity": "Aditi"},
+    "Pushya": {"archetype": "The Cosmic Nurturer", "title": "Sacred Keeper of Souls", "description": "You are the universe's embrace. Your love feeds and sustains all that comes near.", "symbol": "Flower", "deity": "Brihaspati"},
+    "Ashlesha": {"archetype": "The Cosmic Mystic", "title": "Serpent of Hidden Wisdom", "description": "You hold the keys to secrets and shadow. Kundalini power rises within your spine.", "symbol": "Serpent", "deity": "Nagas"},
+    "Magha": {"archetype": "The Cosmic Sovereign", "title": "Heir of Celestial Thrones", "description": "Royal blood flows through your cosmic lineage. You were born to lead with dignity.", "symbol": "Throne", "deity": "Pitrs"},
+    "Purva Phalguni": {"archetype": "The Cosmic Lover", "title": "Child of Pleasure and Creation", "description": "Joy, creativity, and love are your cosmic currency. You make life a sacred celebration.", "symbol": "Hammock", "deity": "Bhaga"},
+    "Uttara Phalguni": {"archetype": "The Cosmic Provider", "title": "Pillar of Celestial Order", "description": "Generous and steady, you are the backbone of cosmic order. Prosperity flows through your grace.", "symbol": "Bed", "deity": "Aryaman"},
+    "Hasta": {"archetype": "The Cosmic Craftsman", "title": "Hand of the Divine Architect", "description": "Skilled hands, sharp mind. You manifest the divine blueprint with precision and care.", "symbol": "Hand", "deity": "Savitar"},
+    "Chitra": {"archetype": "The Cosmic Artist", "title": "Painter of Celestial Realities", "description": "You see the sacred geometry in all things and craft beauty from the cosmic canvas.", "symbol": "Pearl", "deity": "Vishwakarma"},
+    "Swati": {"archetype": "The Cosmic Free Spirit", "title": "Wind That Bends But Never Breaks", "description": "Independent and adaptable as the wind. You cannot be contained — only guided.", "symbol": "Coral", "deity": "Vayu"},
+    "Vishakha": {"archetype": "The Cosmic Achiever", "title": "Arrow of Unwavering Purpose", "description": "Laser-focused and unstoppable. Once you set your aim, the cosmos moves to support you.", "symbol": "Archway", "deity": "Indra-Agni"},
+    "Anuradha": {"archetype": "The Cosmic Devotee", "title": "Heart of Sacred Friendship", "description": "Loyalty and devotion are your cosmic gifts. You build bridges between souls and stars.", "symbol": "Lotus", "deity": "Mitra"},
+    "Jyeshtha": {"archetype": "The Cosmic Elder", "title": "Ancient Guardian of Power", "description": "Old soul energy radiates from your core. You protect, guide, and carry great responsibility.", "symbol": "Umbrella", "deity": "Indra"},
+    "Mula": {"archetype": "The Cosmic Destroyer", "title": "Root Cutter of False Realities", "description": "You destroy what no longer serves and dig to the very root of truth. Liberation is your path.", "symbol": "Roots", "deity": "Nirrti"},
+    "Purva Ashadha": {"archetype": "The Cosmic Purifier", "title": "Waters of Invincible Truth", "description": "You cleanse, purify, and invigorate. Your spirit cannot be defeated once aligned with truth.", "symbol": "Fan", "deity": "Apas"},
+    "Uttara Ashadha": {"archetype": "The Cosmic Victor", "title": "Champion of Universal Law", "description": "Victory follows you like a shadow. You uphold dharma and cosmic order in all you do.", "symbol": "Elephant Tusk", "deity": "Vishvadevas"},
+    "Shravana": {"archetype": "The Cosmic Listener", "title": "Receiver of Celestial Transmissions", "description": "You hear what others cannot. The universe whispers its secrets directly into your soul.", "symbol": "Three Footprints", "deity": "Vishnu"},
+    "Dhanishta": {"archetype": "The Cosmic Musician", "title": "Drummer of the Universal Rhythm", "description": "You carry the beat of creation in your heart. Abundance and music flow through your being.", "symbol": "Drum", "deity": "Eight Vasus"},
+    "Shatabhisha": {"archetype": "The Cosmic Healer", "title": "Master of a Hundred Medicines", "description": "Hidden and mysterious, you hold the cure to what ails the soul. Solitude is your temple.", "symbol": "Circle", "deity": "Varuna"},
+    "Purva Bhadrapada": {"archetype": "The Cosmic Firebrand", "title": "Lightning Strike of Awakening", "description": "Fierce, passionate, and spiritually electric. You burn away the old world to birth the new.", "symbol": "Sword", "deity": "Aja Ekapada"},
+    "Uttara Bhadrapada": {"archetype": "The Cosmic Sage", "title": "Depth of the Infinite Ocean", "description": "Still waters run deep within you. Wisdom, patience, and cosmic perspective are your crown.", "symbol": "Snake", "deity": "Ahirbudhnya"},
+    "Revati": {"archetype": "The Cosmic Guide", "title": "Shepherd of Departing Souls", "description": "You carry souls safely across cosmic thresholds. Compassion and completion define your path.", "symbol": "Fish", "deity": "Pushan"},
+}
+
+
+def calculate_archetype(nakshatra: str) -> dict:
+    return NAKSHATRA_ARCHETYPE.get(nakshatra, NAKSHATRA_ARCHETYPE["Ashwini"])

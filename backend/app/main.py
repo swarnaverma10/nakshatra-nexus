@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection
-from app.api.routes import visitor, selfie, avatar, astrology
+from app.api.routes import visitor, selfie, avatar, astrology, aura, spirit_animal, archetype, wheel, destiny_vault, gemini_insight
 
 
 @asynccontextmanager
@@ -34,6 +34,12 @@ app.include_router(visitor.router, prefix=settings.API_PREFIX)
 app.include_router(selfie.router, prefix=settings.API_PREFIX)
 app.include_router(avatar.router, prefix=settings.API_PREFIX)
 app.include_router(astrology.router, prefix=settings.API_PREFIX)
+app.include_router(aura.router, prefix=settings.API_PREFIX)
+app.include_router(spirit_animal.router, prefix=settings.API_PREFIX)
+app.include_router(archetype.router, prefix=settings.API_PREFIX)
+app.include_router(wheel.router, prefix=settings.API_PREFIX)
+app.include_router(destiny_vault.router, prefix=settings.API_PREFIX)
+app.include_router(gemini_insight.router, prefix=settings.API_PREFIX)
 
 
 @app.get("/")

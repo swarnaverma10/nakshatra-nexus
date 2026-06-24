@@ -23,6 +23,9 @@ class Settings(BaseSettings):
 
     RESEND_API_KEY: str = ""
     RESEND_FROM_EMAIL: str = "Nakshatra Nexus <noreply@yourdomain.com>"
+    SEGMIND_API_KEY: str = ""
+
+    BASE_URL: str = "http://localhost:5173"
 
     SECRET_KEY: str = "changeme"
 

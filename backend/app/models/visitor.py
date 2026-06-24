@@ -1,7 +1,5 @@
 from datetime import datetime, date, time
-from typing import Optional
 from bson import ObjectId
-
 
 class VisitorModel:
     collection_name = "visitors"
@@ -12,11 +10,8 @@ class VisitorModel:
             "full_name": data["full_name"],
             "email": data["email"],
             "date_of_birth": data["date_of_birth"].isoformat() if isinstance(data["date_of_birth"], date) else data["date_of_birth"],
-            "time_of_birth": data["time_of_birth"].isoformat() if isinstance(data["time_of_birth"], time) else data["time_of_birth"],
+            "time_of_birth": data.get("time_of_birth", time(12,0,0)).isoformat() if isinstance(data.get("time_of_birth"), time) else data.get("time_of_birth", "12:00:00"),
             "place_of_birth": data["place_of_birth"],
-            "latitude": data["latitude"],
-            "longitude": data["longitude"],
-            "timezone": data["timezone"],
             "selfie_url": data.get("selfie_url"),
             "avatar_url": data.get("avatar_url"),
             "zodiac": data.get("zodiac"),
@@ -39,11 +34,8 @@ class VisitorModel:
             "full_name": doc["full_name"],
             "email": doc["email"],
             "date_of_birth": doc["date_of_birth"],
-            "time_of_birth": doc["time_of_birth"],
+            "time_of_birth": doc.get("time_of_birth", "12:00:00"),
             "place_of_birth": doc["place_of_birth"],
-            "latitude": doc["latitude"],
-            "longitude": doc["longitude"],
-            "timezone": doc["timezone"],
             "selfie_url": doc.get("selfie_url"),
             "avatar_url": doc.get("avatar_url"),
             "created_at": doc["created_at"].isoformat() if isinstance(doc["created_at"], datetime) else doc["created_at"],

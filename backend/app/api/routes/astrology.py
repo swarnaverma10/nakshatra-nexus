@@ -10,7 +10,6 @@ from app.engines.astrology_engine import calculate_full_astrology
 
 router = APIRouter(prefix="/visitors", tags=["Astrology"])
 
-
 @router.post("/{visitor_id}/astrology", response_model=AstrologyResponse)
 async def calculate_astrology(visitor_id: str):
     db = get_db()
@@ -26,14 +25,13 @@ async def calculate_astrology(visitor_id: str):
 
     birth_date = date.fromisoformat(visitor["date_of_birth"])
     birth_time = time.fromisoformat(visitor["time_of_birth"])
+    place_of_birth = visitor.get("place_of_birth", "Delhi, India")
 
     try:
         result = calculate_full_astrology(
             birth_date=birth_date,
             birth_time=birth_time,
-            tz_name=visitor["timezone"],
-            latitude=visitor["latitude"],
-            longitude=visitor["longitude"],
+            place_of_birth=place_of_birth,
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Astrology calculation failed: {exc}")

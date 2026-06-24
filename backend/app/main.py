@@ -28,6 +28,8 @@ app.add_middleware(
         settings.FRONTEND_URL,
         "http://localhost:5173",
         "http://localhost:3000",
+        "https://nakshatra-nexus.onrender.com",
+        "https://nakshatra-nexus-frontend.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -48,7 +50,7 @@ app.include_router(destiny_vault.router,  prefix=settings.API_PREFIX)
 app.include_router(gemini_insight.router, prefix=settings.API_PREFIX)
 app.include_router(passport.router,       prefix=settings.API_PREFIX)
 app.include_router(qr.router,             prefix=settings.API_PREFIX)
-app.include_router(profile.router,       prefix=settings.API_PREFIX)
+app.include_router(profile.router,        prefix=settings.API_PREFIX)
 app.include_router(email.router,          prefix=settings.API_PREFIX)
 
 

@@ -12,7 +12,9 @@ TEMPLATES_ROOT = Path(__file__).resolve().parent.parent / "assets" / "avatar-tem
 VALID_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 
 INSIGHTFACE_DIR = Path.home() / ".insightface" / "models"
-INSWAPPER_URL = "https://huggingface.co/deepinsight/inswapper/resolve/main/inswapper_128.onnx"
+
+# Alternative public mirror
+INSWAPPER_URL = "https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx"
 
 _face_app = None
 _swapper = None

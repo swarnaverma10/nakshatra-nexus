@@ -30,9 +30,9 @@ services:
         sync: false
       - key: SECRET_KEY
         generateValue: true
-
-staticSites:
-  - name: nakshatra-nexus-frontend
+  - type: web
+    name: nakshatra-nexus-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist

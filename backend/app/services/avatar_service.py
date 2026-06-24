@@ -1,23 +1,36 @@
-import httpx
 import random
-import io
+import urllib.request
 import numpy as np
 import cv2
 from pathlib import Path
 
 import insightface
 from insightface.app import FaceAnalysis
+import httpx
 
-TEMPLATES_ROOT = Path(__file__).resolve().parents[3] / "frontend" / "public" / "avatar-templates"
+TEMPLATES_ROOT = Path(__file__).resolve().parent.parent / "assets" / "avatar-templates"
 VALID_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+
+INSIGHTFACE_DIR = Path.home() / ".insightface" / "models"
+INSWAPPER_URL = "https://huggingface.co/deepinsight/inswapper/resolve/main/inswapper_128.onnx"
 
 _face_app = None
 _swapper = None
 
 
+def _ensure_models():
+    INSIGHTFACE_DIR.mkdir(parents=True, exist_ok=True)
+    inswapper_path = INSIGHTFACE_DIR / "inswapper_128.onnx"
+    if not inswapper_path.exists():
+        print("[Avatar] Downloading inswapper_128.onnx (~500MB)...")
+        urllib.request.urlretrieve(INSWAPPER_URL, str(inswapper_path))
+        print("[Avatar] Download complete.")
+
+
 def _get_face_app():
     global _face_app
     if _face_app is None:
+        _ensure_models()
         _face_app = FaceAnalysis(name="buffalo_l")
         _face_app.prepare(ctx_id=0, det_size=(640, 640))
     return _face_app
@@ -26,7 +39,8 @@ def _get_face_app():
 def _get_swapper():
     global _swapper
     if _swapper is None:
-        model_path = str(Path.home() / ".insightface" / "models" / "inswapper_128.onnx")
+        _ensure_models()
+        model_path = str(INSIGHTFACE_DIR / "inswapper_128.onnx")
         _swapper = insightface.model_zoo.get_model(model_path)
     return _swapper
 
@@ -34,6 +48,7 @@ def _get_swapper():
 def _list_all_templates() -> list[Path]:
     templates = []
     if not TEMPLATES_ROOT.exists():
+        print(f"[Avatar] WARNING: Templates dir not found: {TEMPLATES_ROOT}")
         return templates
     for category_dir in TEMPLATES_ROOT.iterdir():
         if category_dir.is_dir():
@@ -62,7 +77,12 @@ async def generate_avatar_from_selfie(selfie_url: str, visitor_data: dict = None
     if not selfie_url:
         raise RuntimeError("No selfie_url provided for avatar generation")
 
+    print(f"[Avatar] Templates root: {TEMPLATES_ROOT}")
+    print(f"[Avatar] Templates exist: {TEMPLATES_ROOT.exists()}")
+
     template_path = _pick_random_template()
+    print(f"[Avatar] Selected template: {template_path}")
+
     template_img = cv2.imread(str(template_path))
     if template_img is None:
         raise RuntimeError(f"Failed to read template image: {template_path}")
